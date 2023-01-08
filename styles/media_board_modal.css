@@ -1,0 +1,79 @@
+.header-nav-modal {
+    display: flex;
+}
+
+@media screen and (max-width: 940px) {
+    .header-nav-modal {
+        display: none !important;
+    }
+
+    .modal-addtask-wrapper {
+        width: unset;
+        position: absolute;
+        top: var(--header-height-mobile);
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-radius: unset;
+        background-color: var(--bg-body);
+    }
+
+    .modal-add-task-content {
+        height: 100%;
+        max-height: unset;
+        padding-bottom: var(--nav-height-mobile);
+    }
+}
+
+@media screen and (max-width: 670px) {
+    .modal-taskview-wrapper {
+        width: 100%;
+        max-width: unset;
+        position: absolute;
+        top: var(--header-height-mobile);
+        bottom: var(--nav-height-mobile);
+        border-radius: unset;
+    }
+
+    .modal-task-content {
+        max-height: 100%;
+    }
+
+    .editor {
+        padding: 30px 50px 0 30px;
+    }
+
+    #content-board .modal-task-close {
+        top: 18px;
+        right: 24px;
+        width: 20px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #modal-task-cat {
+        font-size: 21px;
+    }
+
+    #modal-task-title {
+        font-size: 36px;
+    }
+
+    #modal-task-desc {
+        font-size: 16px;
+    }
+
+    .reader {
+        padding: 30px 30px 0;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    #subtask-list {
+        font-size: 15px;
+    }
+
+    .editor {
+        padding: 30px 35px 0 20px;
+    }
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/fonts.css">
+    <link rel="stylesheet" href="./styles/general.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/media_main.css">
+    <link rel="stylesheet" href="./styles/contacts.css">
+    <link rel="stylesheet" href="./styles/media_contacts.css">
+    <link rel="stylesheet" href="./styles/contacts_modal.css">
+    <link rel="stylesheet" href="./styles/media_contacts_modal.css">
+    <link rel="stylesheet" href="./styles/add_task.css">
+    <link rel="stylesheet" href="./styles/media_add-task.css">
+    <link rel="stylesheet" href="./styles/board_modal.css">
+    <link rel="stylesheet" href="./styles/media_board_modal.css">
+    <link rel="stylesheet" href="./styles/media_summary.css ">
+    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
+    <script src="./js/include_html.js"></script>
+    <script src="./js/data.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/contacts.js"></script>
+    <script src="./js/contacts_html.js"></script>
+    <script src="./js/contacts_modal.js"></script>
+    <script src="./js/board.js"></script>
+    <script src="./js/add_task.js"></script>
+    <script src="./js/add_task_html.js"></script>
+    <script src="./js/mini_backend.js"></script>
+    <script>setURL('https://christof-mark.developerakademie.net/join_app/smallest_backend_ever)');</script>
+    <title>Contacts</title>
+</head>
+
+<body onload="initContacts()">
+    <header w3-include-html="./assets/templates/header.html"></header>
+    <nav w3-include-html="./assets/templates/navbar.html"></nav>
+    <div id="content-container" class="content-container">
+        <div class="flex-contacts-page">
+            <div id="contacts-menu" class="contacts-menu">
+                <div id="contacts-menu-scrollable"></div>
+            </div>
+            <div id="contacts-container" class="contacts-container">
+                <h3 style="display: none;">Kanban Project Management Tool</h3>
+                <div class="contacts-headline">
+                    <img onclick="toggleShowContactOnMobile()" class="contacts-back-btn d-none"
+                        src="./assets/img/arrowBack.svg" alt="arrow">
+                    <h1>Contacts</h1>
+                    <div id="headline-separator"></div>
+                    <span class="contacts-subheadline">Better with a team</span>
+                </div>
+
+                <div id="contact-div"></div>
+
+                <div id="contact-edit-btn" class="d-none">
+                    <img src="./assets/img/pencil.svg" alt="edit contact">
+                </div>
+            </div>
+            <div onclick="openContactForm()" id="new-contact-btn" class="contact-page-button">New contact <img
+                    class="contact-button-logo" src="./assets/img/contact-button-logo.png"></div>
+
+
+        </div>
+
+        <div class="flex-just-center">
+            <div id="contact-popup-btn" class="popup-btn">
+                <div>Contact successfully created</div>
+            </div>
+        </div>
+
+        <div class="flex-just-center">
+            <div id="contact-edit-popup-btn" class="popup-btn">
+                <div>Contact successfully modified</div>
+            </div>
+        </div>
+
+        <!-- MODAL: Add task -->
+        <div id="modal-add-task" class="modal-container d-none">
+            <div class="modal-wrapper modal-addtask-wrapper">
+                <img class="modal-task-close" src="./assets/img/black-x.svg" onclick="toggleModal('modal-add-task')"
+                    alt="close">
+                <div id="modal-add-task-content" class="modal-add-task-content"></div>
+            </div>
+        </div>
+        <!-- END: MODAL Add task -->
+
+        <!-- MODAL: New/Edit contact -->
+        <div id="modal-contact" class="modal-container d-none" onclick="toggleContactsModal()">
+            <div id="modal-contact-content" onclick="doNotClose(event)">
+                <img class="modal-task-close" src="./assets/img/clear-x.svg" onclick="toggleContactsModal()"
+                    alt="close">
+                <div id="modal-contact--title-container">
+                    <img id="modal-contact--logo" src="./assets/img/logo_nav.png" alt="logo">
+                    <div id="modal-contact--title">Add contact</div>
+                    <div id="modal-contact--subtitle">Tasks are better with a team</div>
+                    <img id="modal-contact--divider" src="./assets/img/horizontal_blue_line.png">
+                </div>
+                <div id="modal-contact--form">
+                    <div id="user-badge">
+                        <span id="user-badge--initials" class="d-none"
+                            style="background-color: hsl(270, 100%, 50%)">AB</span>
+                        <img id="user-badge--newuser" class="" src="./assets/img/user_guest.png">
+                    </div>
+                    <form action="#" onsubmit="return false;" class="contact-form">
+                        <div class="form-input-container">
+                            <input class="input-profile" id="username" name="username" placeholder="Name" required>
+                            <label for="username" id="name-validation" class="input-validation hidden">Please enter
+                                first and last name.</label>
+                        </div>
+                        <div class="form-input-container">
+                            <input class="input-email" id="email" type="email" name="email" placeholder="Email"
+                                required>
+                            <label for="email" id="mail-validation" class="input-validation hidden">This email address
+                                already exists!</label>
+                        </div>
+                        <input class="input-phone" id="phone" type="tel" name="phone" placeholder="Phone">
+                        <div id="contact-submit-btns">
+                            <button onclick="toggleContactsModal()" type="reset" class="clear-btn">Cancel
+                                <img src="./assets/img/clear-x.svg">
+                            </button>
+                            <button id="contact-create-btn" onclick="saveNewContact()" type="submit" class="create-btn">Create contact
+                                <img src="./assets/img/create-check.svg">
+                            </button>
+                        </div>
+                        <div id="contact-save-btn" class="d-none">
+                            <button id="contact-update-btn" onclick="updateContact()" type="submit"
+                                class="create-btn">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- END: MODAL New/Edit contact -->
+    </div>
+</body>
+
+</html>
