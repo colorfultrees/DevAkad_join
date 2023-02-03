@@ -2,7 +2,21 @@
  * Loading data from server
  */
 async function initLogin() {
-    await loadDataFromServer();
+    await loadDataFromServer(true);
+}
+
+
+function checkForRemeberedUser() {
+    loadCurrentUser();
+    if (currentUser['email']) {
+        const inputEmail = document.getElementById('email');
+        const inputPwd = document.getElementById('password');
+        const chkBxRemMe = document.getElementById('remember-me');
+        inputEmail.value = currentUser['email'];
+        inputPwd.value = currentUser['password'];
+        chkBxRemMe.checked = true;
+        rememberMe = true;
+    }
 }
 
 
@@ -26,6 +40,7 @@ function guestLogin() {
 function login(e) {
     e.preventDefault();
 
+    const chkBxRemMe = document.getElementById('remember-me');
     let email = document.getElementById('email');
     let password = document.getElementById('password');
 
@@ -34,6 +49,7 @@ function login(e) {
     if (currentUser) {
         // await saveOnServer('currentUser', currentUser);
         saveCurrentUser();
+        rememberMe = chkBxRemMe.checked;
         window.location.href = './summary.html?login=2';
     } else {
         showPopupMessage('popup-button');

@@ -17,7 +17,8 @@ const WELCOME_MSG_TRANS = 400;
  */
 const HEADER_CTX_MENU_ANIM_TIME = 220;
 
-let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+let rememberMe = false;
 
 
 /**
@@ -38,9 +39,10 @@ async function init() {
 /**
  * Loads all data from the server
  */
-async function loadDataFromServer() {
+async function loadDataFromServer(login) {
     await downloadFromServer();
     users = await loadFromServer('users');
+    if (login) return; // To handle login only user data is required
     tasks = await loadFromServer('tasks');
     categories = await loadFromServer('categories');
 }
@@ -175,15 +177,14 @@ function hideCtxMenu(ctxMenu) {
 
 
 /**
- * Logout and reset currentUser
+ * Logout and reset currentUser (if "Remember me" is not requested)
  */
 async function logout() {
-
-    // TODO: check for "Remember me" --> if set, don't reset the user data
-
-    currentUser = {};
-    // await saveOnServer('currentUser', currentUser);
-    saveCurrentUser();
+    if (!rememberMe) {
+        currentUser = {};
+        // await saveOnServer('currentUser', currentUser);
+        saveCurrentUser();
+    }
     window.location.href = './index.html';
 }
 
