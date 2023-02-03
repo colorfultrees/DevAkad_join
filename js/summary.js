@@ -15,9 +15,9 @@ async function initSummary() {
 
 
 /**
- * Checking if guest log in, else Loading currentUser and changing welcome message
+ * Sets the user name in the welcome message
  */
-async function setCurrentUser() {
+function setCurrentUser() {
     document.getElementById('welcome-name-mobile').innerHTML = currentUser['name'];
     document.getElementById('welcome-name-desk').innerHTML = currentUser['name'];
 }

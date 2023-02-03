@@ -7,19 +7,13 @@ async function initLogin() {
 
 
 /**
- * Setting currentUser to Guest when Logging in as Guest
+ * Handles guest login
  */
-async function guestLogin() {
+function guestLogin() {
 
-    currentUser = {
-        "name": "Guest",
-        "email": "",
-        "password": "",
-        "phone": "",
-        "short_name": "G",
-        "color": "HSL(150, 100%, 50%)",
-    };
-    await saveOnServer('currentUser', currentUser);
+    currentUser = guestUser;
+    // await saveOnServer('currentUser', currentUser);
+    saveCurrentUser();
     window.location.href = './summary.html?login=1'
 }
 
@@ -29,7 +23,7 @@ async function guestLogin() {
  * @param {Object} e 
  * @returns {boolean}
  */
-async function login(e) {
+function login(e) {
     e.preventDefault();
 
     let email = document.getElementById('email');
@@ -38,7 +32,8 @@ async function login(e) {
     currentUser = users.find(u => u.email == email.value && u.password == password.value); //checking if user exists
 
     if (currentUser) {
-        await saveOnServer('currentUser', currentUser);
+        // await saveOnServer('currentUser', currentUser);
+        saveCurrentUser();
         window.location.href = './summary.html?login=2';
     } else {
         showPopupMessage('popup-button');

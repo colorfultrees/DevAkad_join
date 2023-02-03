@@ -26,7 +26,8 @@ let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
 async function init() {
     await includeHTML();
     await loadDataFromServer();
-    await loadCurrentUserFromServer();
+    // await loadCurrentUserFromServer();
+    loadCurrentUser()
     hasTouch();
     setHeaderUserBadge();
     handleWelcomeOnMobile();
@@ -46,10 +47,18 @@ async function loadDataFromServer() {
 
 
 /**
- * Loads the current user from server
+ * Loads the data of the logged-in user
  */
-async function loadCurrentUserFromServer() {
-    currentUser = JSON.parse(backend.getItem('currentUser'))
+// async function loadCurrentUserFromServer() {
+function loadCurrentUser() {
+    // currentUser = JSON.parse(backend.getItem('currentUser'));
+    currentUser = JSON.parse(localStorage.getItem('currentUser')) || guestUser;
+}
+
+
+function saveCurrentUser() {
+    userAsString = JSON.stringify(currentUser);
+    localStorage.setItem('currentUser', userAsString);
 }
 
 /**
@@ -169,8 +178,12 @@ function hideCtxMenu(ctxMenu) {
  * Logout and reset currentUser
  */
 async function logout() {
-    currentUser = [];
-    await saveOnServer('currentUser', currentUser);
+
+    // TODO: check for "Remember me" --> if set, don't reset the user data
+
+    currentUser = {};
+    // await saveOnServer('currentUser', currentUser);
+    saveCurrentUser();
     window.location.href = './index.html';
 }
 

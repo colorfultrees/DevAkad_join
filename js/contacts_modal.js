@@ -292,11 +292,12 @@ async function updateTaskAssignment(id) {
  * Checks if the edited user equals the logged-in user and updates the respective data and settings
  * @param {Number} id The user's ID
  */
-async function checkAndUpdateLoggedIn(id) {
+function checkAndUpdateLoggedIn(id) {
     if (currentUser['email'] != currentContactMail) return;
 
     currentUser = users[id];
-    await saveOnServer('currentUser', currentUser);
+    // await saveOnServer('currentUser', currentUser);
+    saveCurrentUser();
     setHeaderUserBadge();
 }
 
