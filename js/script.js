@@ -1,3 +1,5 @@
+setURL('https://christof-mark.developerakademie.net/join_app/smallest_backend_ever');
+
 /**
  * Maximum width for mobile screen
  */
