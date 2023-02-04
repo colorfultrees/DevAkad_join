@@ -18,7 +18,6 @@ const WELCOME_MSG_TRANS = 400;
 const HEADER_CTX_MENU_ANIM_TIME = 220;
 
 let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-let rememberMe = false;
 
 
 /**
@@ -83,6 +82,12 @@ async function loadFromServer(key) {
 async function saveOnServer(key, item) {
     itemAsString = JSON.stringify(item);
     await backend.setItem(key, itemAsString);
+}
+
+
+function readRememberMe() {
+    const remMe = JSON.parse(localStorage.getItem('rememberMe')) || false;
+    return remMe;
 }
 
 
@@ -180,7 +185,7 @@ function hideCtxMenu(ctxMenu) {
  * Logout and reset currentUser (if "Remember me" is not requested)
  */
 async function logout() {
-    if (!rememberMe) {
+    if (!readRememberMe()) {
         currentUser = {};
         // await saveOnServer('currentUser', currentUser);
         saveCurrentUser();

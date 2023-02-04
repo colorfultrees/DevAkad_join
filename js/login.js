@@ -3,6 +3,7 @@
  */
 async function initLogin() {
     await loadDataFromServer(true);
+    checkForRemeberedUser();
 }
 
 
@@ -15,7 +16,6 @@ function checkForRemeberedUser() {
         inputEmail.value = currentUser['email'];
         inputPwd.value = currentUser['password'];
         chkBxRemMe.checked = true;
-        rememberMe = true;
     }
 }
 
@@ -38,23 +38,26 @@ function guestLogin() {
  * @returns {boolean}
  */
 function login(e) {
-    e.preventDefault();
-
     const chkBxRemMe = document.getElementById('remember-me');
     let email = document.getElementById('email');
     let password = document.getElementById('password');
+    e.preventDefault();
 
-    currentUser = users.find(u => u.email == email.value && u.password == password.value); //checking if user exists
-
-    if (currentUser) {
+    if (checkLoginData()) {
         // await saveOnServer('currentUser', currentUser);
         saveCurrentUser();
-        rememberMe = chkBxRemMe.checked;
+        localStorage.setItem('rememberMe', chkBxRemMe.checked);;
         window.location.href = './summary.html?login=2';
     } else {
         showPopupMessage('popup-button');
     }
     return false
+}
+
+
+function checkLoginData() {
+    currentUser = users.find(u => u.email == email.value && u.password == password.value);
+    return currentUser ? true : false;
 }
 
 
