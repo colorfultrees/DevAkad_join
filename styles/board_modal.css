@@ -63,10 +63,17 @@ button {
     padding: 50px 100px 0;
 }
 
-#btn-edit-task {
+#container-editor-btns {
     position: absolute;
     right: 40px;
     bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+#btn-edit-task {
     width: 57px;
     height: 57px;
     display: flex;
@@ -78,6 +85,22 @@ button {
 }
 
 #btn-edit-task img {
+    width: 25px;
+}
+
+#btn-delete-task {
+    width: 47px;
+    height: 47px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius-btn);
+    border: solid 2px var(--bg-color-main);
+    background-color: var(--dimmed);
+    cursor: pointer;
+}
+
+#btn-delete-task img {
     width: 25px;
 }
 
