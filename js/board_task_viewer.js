@@ -468,12 +468,13 @@ function updateTaskCard() {
 }
 
 
-function deleteTask() {
+async function deleteTask() {
     cancelDelete('request-delete-task-popup');
     toggleModal('modal-task');
     tasks[openedTask.statusId].splice(openedTask.taskId, 1);
     renderTasksStatus(openedTask.statusId);
+    await saveOnServer('tasks', tasks);
     setTimeout(() => {
         showPopup('task-deleted-popup');
-    }, 650);
+    }, 350);
 }
