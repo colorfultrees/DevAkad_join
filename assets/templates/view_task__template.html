@@ -6,7 +6,7 @@
             <button id="btn-edit-task" onclick="toggleTaskEditMode()">
                 <img src="./assets/img/symb_todo.svg" alt="edit">
             </button>
-            <button id="btn-delete-task" onclick="deleteTask()">
+            <button id="btn-delete-task" onclick="requestDelete('request-delete-task-popup')">
                 <img src="./assets/img/delete.png" alt="delete">
             </button>
         </div>
@@ -138,5 +138,13 @@
             <span>Ok</span>
             <img src="./assets/img/symb_done.svg" alt="ok">
         </button>
+    </div>
+
+    <div id="request-delete-task-popup" class="popup-btn delete-popup">
+        <div>Delete task?</div>
+        <div class="popup-ctrl-container">
+            <div id="confirm-delete-task" class="popup-ctrl" onclick="deleteTask()">Yes</div>
+            <div id="cancel-delete-task" class="popup-ctrl" onclick="cancelDelete('request-delete-task-popup')">No</div>
+        </div>
     </div>
 </div>

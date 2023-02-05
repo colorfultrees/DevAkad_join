@@ -89,8 +89,9 @@ button {
 }
 
 #btn-delete-task {
-    width: 47px;
-    height: 47px;
+    width: 57px;
+    /* height: 47px; */
+    padding: 5px;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -521,12 +521,16 @@ select {
 
 .popup-btn {
     position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0px;
     width: 326px;
-    height: 74px;
+    /* height: 74px; */
+    padding: 10px;
     background: #2A3647;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
@@ -539,7 +543,7 @@ select {
 }
 
 .animation {
-    animation: transition 3s;
+    animation: transition 3s forwards;
 }
 
 @keyframes transition {

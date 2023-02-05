@@ -294,3 +294,23 @@ function getFirstLetterOfLastName(j) {
 
     return surname[0];
 }
+
+
+/**
+ * Displays a request popup
+ * @param {String} id The ID of the request popup
+ */
+function requestDelete(id) {
+    let popup = document.getElementById(id);
+    popup.classList.add('animation');
+}
+
+
+/**
+ * Hides a request popup
+ * @param {String} id The ID of the request popup
+ */
+function cancelDelete(id) {
+    let popup = document.getElementById(id);
+    popup.classList.remove('animation');
+}

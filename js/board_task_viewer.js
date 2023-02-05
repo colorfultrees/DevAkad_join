@@ -466,3 +466,14 @@ function updateTaskCard() {
 
     taskCard.innerHTML = renderTaskCardContent(statusId, taskId, cat, catColor, prio);
 }
+
+
+function deleteTask() {
+    cancelDelete('request-delete-task-popup');
+    toggleModal('modal-task');
+    tasks[openedTask.statusId].splice(openedTask.taskId, 1);
+    renderTasksStatus(openedTask.statusId);
+    setTimeout(() => {
+        showPopup('task-deleted-popup');
+    }, 650);
+}

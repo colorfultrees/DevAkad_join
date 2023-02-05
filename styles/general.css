@@ -94,3 +94,21 @@ a {
     background-color: var(--bg-color-main);
     border-radius: 100vw;
 }
+
+.delete-popup {
+    flex-direction: column;
+    gap: 5px !important;
+}
+
+.popup-ctrl-container {
+    display: flex;
+    gap: 20px;
+}
+
+.popup-ctrl {
+    color: var(--border-dimmed);
+    cursor: pointer;
+}
+.popup-ctrl:hover {
+    color: white;
+}
