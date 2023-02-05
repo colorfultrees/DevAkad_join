@@ -92,11 +92,12 @@ function toggleShowContactOnMobile() {
     toggleClassList('contacts-menu', 'd-none');
     toggleClassList('new-contact-btn', 'd-none');
     toggleClassList('edit-contact', 'd-none');
+    toggleClassList('delete-contact', 'd-none');
 }
 
 
 /**
- * 
+ * Writes the contact information to the page
  * @param {number} index Index of the user
  */
 function renderContactInformationById(index) {

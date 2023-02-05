@@ -32,7 +32,10 @@ function contactCardHTML(index) {
         </div>
         <div class="contact-and-edit">
             <div class="contact-information">Contact Information</div>
-            <div id="edit-contact" class="edit-contact"><img src="./assets/img/edit_contact.png"><span class="edit-contact-text">Edit Contact</span></div>
+            <div id="edit-contact" class="edit-contact"><img src="./assets/img/edit_contact.png"><span>Edit Contact</span></div>
+        </div>
+        <div id="delete-contact-container">
+            <div id="delete-contact" class="edit-contact"><img src="./assets/img/delete.png"><span id="delete-contact-text">Delete Contact</span></div>
         </div>
         <div class="email-margins"><b>Email</b></div>
         <a class="users-email-big" id="u-email${index}">testmail</a>

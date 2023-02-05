@@ -202,8 +202,9 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 30px;
-    margin-bottom: 30px;
-    max-width: 392px;
+    /* margin-bottom: 30px; */
+    margin-bottom: 7px;
+    max-width: var(--contact-details-maxwidth);
 }
 
 .edit-contact {
@@ -212,6 +213,19 @@
     gap: 6px;
     color: #2A3647;
     cursor: pointer;
+}
+
+#delete-contact-container {
+    max-width: var(--contact-details-maxwidth);
+}
+
+#delete-contact img {
+    margin-left: auto;
+    height: 20px;
+}
+
+#delete-contact-text {
+    font-size: 15px;
 }
 
 .email-margins {
@@ -230,6 +244,6 @@
     cursor: pointer;
 }
 
-.d-none {
+/* .d-none {
     display: none;
-}
+} */

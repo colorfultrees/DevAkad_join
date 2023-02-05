@@ -30,6 +30,7 @@
     --border-radius-main: 30px;
     --border-radius-btn: 10px;
     --task-card-width: 250px;
+    --contact-details-maxwidth: 392px;
 
     /* Shadow */
     --shadow-badge: 0 0 4px 0 rgba(0, 0, 0, 0.1);
