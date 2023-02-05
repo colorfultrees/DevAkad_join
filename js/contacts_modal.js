@@ -241,7 +241,7 @@ async function updateContact(id) {
     await updateTaskAssignment(id);
     renderContacts();
     renderContactInformation(id);
-    await checkAndUpdateLoggedIn(id);
+    checkAndUpdateLoggedIn(id);
 
     currentContactMail = '';
     toggleContactsModal();

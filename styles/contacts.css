@@ -277,6 +277,12 @@
     width: 40px;
 }
 
+.popup-alert {
+    font-weight: bold;
+    color: red !important;
+    text-align: center;
+}
+
 
 /* .d-none {
     display: none;

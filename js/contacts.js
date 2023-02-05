@@ -167,3 +167,38 @@ function contactSlideInAnimation() {
         contactCard.classList.remove('animationContact')
     }, 225);
 }
+
+
+function deleteContact(id) {
+    cancelDelete('request-delete-contact-popup');
+
+    if (checkLoggedIn(id)) {
+        setTimeout(() => {
+            showPopup('contact-del-cancel-login');
+        }, 100);
+    } 
+    else if (checkAssignedTasks(id)) {
+        setTimeout(() => {
+            showPopup('contact-del-cancel-taskassign');
+        }, 100);
+    }
+    else {
+        alert('TODO: Delete contact ...');
+    }
+}
+
+
+function checkLoggedIn(id) {
+    return users[id]['email'] == currentUser['email'];
+}
+
+
+function checkAssignedTasks(id) {
+    for (let s = 0; s < tasks.length; s++) {
+        for (let t = 0; t < tasks[s].length; t++) {
+            if (tasks[s][t]['assignees'].indexOf(users[id]['email']) >= 0)
+                return true;
+        }
+    }
+    return false;
+}
