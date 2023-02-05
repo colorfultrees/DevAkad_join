@@ -216,11 +216,15 @@
 }
 
 #delete-contact-container {
+    display: flex;
     max-width: var(--contact-details-maxwidth);
 }
 
-#delete-contact img {
+#delete-contact {
     margin-left: auto;
+}
+
+#delete-contact img {
     height: 20px;
 }
 
@@ -243,6 +247,36 @@
     font-size: 16px;
     cursor: pointer;
 }
+
+#container-mobile-btns {
+    position: absolute;
+    right: 40px;
+    bottom: calc(var(--nav-height-mobile) + 40px);
+    display: none;
+}
+
+#contact-edit-btn {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--bg-color-main);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+#contact-edit-btn:hover {
+    background-color: var(--highlight);
+    box-shadow: var(--btn-shadow-hover);
+    /* border-radius: 10px; */
+}
+
+#contact-delete-btn {
+    width: 40px;
+}
+
 
 /* .d-none {
     display: none;

@@ -88,21 +88,13 @@ button {
     width: 25px;
 }
 
-#btn-delete-task {
-    width: 57px;
-    /* height: 47px; */
-    padding: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: var(--border-radius-btn);
-    border: solid 2px var(--bg-color-main);
-    background-color: var(--dimmed);
-    cursor: pointer;
+#btn-edit-task:hover {
+    background-color: var(--highlight);
+    box-shadow: var(--btn-shadow-hover);
 }
 
-#btn-delete-task img {
-    width: 25px;
+#btn-delete-task {
+    width: 57px;
 }
 
 .modal-task-close {

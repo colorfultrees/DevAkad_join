@@ -53,12 +53,19 @@
 
                 <div id="contact-div"></div>
 
-                <div id="contact-edit-btn" class="d-none">
-                    <img src="./assets/img/pencil.svg" alt="edit contact">
-                </div>
+                <div id="container-mobile-btns">
+                    <div id="contact-edit-btn" class="d-none">
+                        <img src="./assets/img/pencil.svg" alt="edit contact">
+                    </div>
+                    <button id="contact-delete-btn" class="btn-delete" onclick="requestDelete('request-delete-contact-popup')">
+                        <img src="./assets/img/delete.png" alt="delete">
+                    </button>
+                </div >
             </div>
-            <div onclick="openContactForm()" id="new-contact-btn" class="contact-page-button">New contact <img
-                    class="contact-button-logo" src="./assets/img/contact-button-logo.png"></div>
+            <div onclick="openContactForm()" id="new-contact-btn" class="contact-page-button">
+                New contact
+                <img class="contact-button-logo" src="./assets/img/contact-button-logo.png">
+            </div>
 
 
         </div>
@@ -74,6 +81,14 @@
                 <div>Contact successfully modified</div>
             </div>
         <!-- </div> -->
+
+        <div id="request-delete-contact-popup" class="popup-btn delete-popup">
+            <div>Delete contact?</div>
+            <div class="popup-ctrl-container">
+                <div id="confirm-delete-contact" class="popup-ctrl" onclick="deleteContact()">Yes</div>
+                <div id="cancel-delete-contact" class="popup-ctrl" onclick="cancelDelete('request-delete-contact-popup')">No</div>
+            </div>
+        </div>
 
         <!-- MODAL: Add task -->
         <div id="modal-add-task" class="modal-container d-none">

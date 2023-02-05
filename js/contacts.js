@@ -109,8 +109,10 @@ function renderContactInformationById(index) {
     if (users[index]['phone']) {
         document.getElementById(`u-phone-number${index}`).innerHTML = users[index]['phone'];
     }
-    document.getElementById('contact-edit-btn').setAttribute('onclick', `openContactEditor(${index})`);
     document.getElementById('edit-contact').setAttribute('onclick', `openContactEditor(${index})`);
+    document.getElementById('confirm-delete-contact').setAttribute('onclick', `deleteContact(${index})`);
+    document.getElementById('contact-edit-btn').setAttribute('onclick', `openContactEditor(${index})`);
+    // TODO: setAttribute for 'confirm-delete-contact-btn'
 }
 
 
