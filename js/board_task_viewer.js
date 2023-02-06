@@ -363,7 +363,8 @@ function listAssigneesEditor(assignees) {
     renderAssignees();
 
     for (let i = 0; i < assignees.length; i++) {
-        selectAssignee(i);
+        let userId = users.findIndex(user => user['email'] == assignees[i]);
+        selectAssignee(userId);
     }
 
 }
@@ -474,7 +475,5 @@ async function deleteTask() {
     tasks[openedTask.statusId].splice(openedTask.taskId, 1);
     renderTasksStatus(openedTask.statusId);
     await saveOnServer('tasks', tasks);
-    setTimeout(() => {
-        showPopup('task-deleted-popup');
-    }, 350);
+    setTimeout(showPopup, 350, 'task-deleted-popup');
 }

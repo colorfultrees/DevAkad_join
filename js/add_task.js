@@ -17,8 +17,8 @@ async function initAddTask() {
 
 async function initAddTaskForm() {
     await loadCategories();
-    await renderAssignees();
-    await dateLimitation();
+    renderAssignees();
+    dateLimitation();
 }
 
 
@@ -202,7 +202,9 @@ function resetActiveColor() {
 
 // Assignee Section //
 
-
+/**
+ * Renders the contact list to the assignees drop down
+ */
 function renderAssignees() {
     let list = document.getElementById('assignee-list');
     let badgeList = document.getElementById('add-task-assignees');

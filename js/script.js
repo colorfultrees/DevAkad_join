@@ -17,7 +17,7 @@ const WELCOME_MSG_TRANS = 400;
  */
 const HEADER_CTX_MENU_ANIM_TIME = 220;
 
-let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ä', 'Ö', 'Ü'];
 
 
 /**
@@ -284,15 +284,15 @@ function generateColors() {
 
 /**
  * Getting the first letter of the last name
- * @param {number} j Index of the user
- * @returns "surename Letter of the last name 
+ * @param {number} id Index of the user
+ * @returns Letter of the last name 
  */
-function getFirstLetterOfLastName(j) {
-    let user = users[j]['name'];
+function getFirstLetterOfLastName(id) {
+    let user = users[id]['name'];
     let names = user.split(' ');
     let surname = names[names.length - 1];
 
-    return surname[0];
+    return surname[0].toUpperCase();
 }
 
 

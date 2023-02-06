@@ -8,7 +8,7 @@ async function initContacts() {
 
 
 /**
- * Renders all contacts in the list
+ * Renders the contacts list
  */
 function renderContacts() {
     let container = document.getElementById('contacts-menu-scrollable');
@@ -16,15 +16,34 @@ function renderContacts() {
     for (let i = 0; i < alphabet.length; i++) {
         for (let j = 0; j < users.length; j++) {
             if (alphabet[i] == getFirstLetterOfLastName(j)) {
-                container.innerHTML += `<div class="alphabet-letter">${alphabet[i]}</div>`;
-                container.innerHTML += `<div class="contacts-underline"></div>`;
+                renderLetterSection(container, alphabet[i]);
+                renderContactsOfLetter(container, alphabet[i]);
                 break;
             }
         }
-        for (let j = 0; j < users.length; j++) {
-            if (alphabet[i] == getFirstLetterOfLastName(j)) {
-                renderContactDiv(j);
-            }
+    }
+}
+
+/**
+ * Renders the letter section title in the contact list
+ * @param {Object} container The HTML element for the contact list
+ * @param {String} letter The current letter
+ */
+function renderLetterSection(container, letter) {
+    container.innerHTML += `<div class="alphabet-letter">${letter}</div>`;
+    container.innerHTML += `<div class="contacts-underline"></div>`;
+}
+
+
+/**
+ * Renders all contacts with the current letter in their surname
+ * @param {Object} container The HTML element for the contact list
+ * @param {String} letter The current letter
+ */
+function renderContactsOfLetter(container, letter) {
+    for (let k = 0; k < users.length; k++) {
+        if (letter == getFirstLetterOfLastName(k)) {
+            renderContactDiv(container, k);
         }
     }
 }
@@ -34,9 +53,10 @@ function renderContacts() {
  * Renders the contact in the list
  * @param {number} index Index of the user
  */
-function renderContactDiv(index) {
-    let contactsMenu = document.getElementById('contacts-menu-scrollable');
-    contactsMenu.innerHTML += contactDivHTML(index);
+function renderContactDiv(container, index) {
+    // let contactsMenu = document.getElementById('contacts-menu-scrollable');
+    // contactsMenu.innerHTML += contactDivHTML(index);
+    container.innerHTML += contactDivHTML(index);
 
     insertUserInformationById(index);
 }
@@ -59,14 +79,13 @@ function insertUserInformationById(index) {
  * @param {number} index Index of the user
  */
 function renderContactInformation(index) {
-    let contactDIV = document.getElementById('contact-div');
-    contactDIV.innerHTML = '';
+    let contactDIV = clearContactCard();
     contactDIV.innerHTML = contactCardHTML(index);
 
     renderContactInformationById(index);
     backgroundColorOfSelected(index);
 
-    if (window.innerWidth < 940) {
+    if (window.innerWidth < MOBILE_MAX_WIDTH) {
         toggleShowContactOnMobile();
     } else {
         contactSlideInAnimation();
@@ -172,28 +191,24 @@ function contactSlideInAnimation() {
 function deleteContact(id) {
     cancelDelete('request-delete-contact-popup');
 
-    if (checkLoggedIn(id)) {
-        setTimeout(() => {
-            showPopup('contact-del-cancel-login');
-        }, 100);
+    if (isUserLoggedIn(id)) {
+        setTimeout(showPopup, 100, 'contact-del-cancel-login');
     } 
-    else if (checkAssignedTasks(id)) {
-        setTimeout(() => {
-            showPopup('contact-del-cancel-taskassign');
-        }, 100);
+    else if (hasUserTasksAssigned(id)) {
+        setTimeout(showPopup, 100, 'contact-del-cancel-taskassign');
     }
     else {
-        alert('TODO: Delete contact ...');
+        execContactDelete(id);
     }
 }
 
 
-function checkLoggedIn(id) {
+function isUserLoggedIn(id) {
     return users[id]['email'] == currentUser['email'];
 }
 
 
-function checkAssignedTasks(id) {
+function hasUserTasksAssigned(id) {
     for (let s = 0; s < tasks.length; s++) {
         for (let t = 0; t < tasks[s].length; t++) {
             if (tasks[s][t]['assignees'].indexOf(users[id]['email']) >= 0)
@@ -201,4 +216,20 @@ function checkAssignedTasks(id) {
         }
     }
     return false;
+}
+
+
+function execContactDelete(id) {
+    users.splice(id, 1);
+    saveOnServer('users', users);
+    renderContacts();
+    clearContactCard();
+    showPopup('contact-del-confirm');
+}
+
+
+function clearContactCard() {
+    let contactDIV = document.getElementById('contact-div');
+    contactDIV.innerHTML = '';
+    return contactDIV;
 }
