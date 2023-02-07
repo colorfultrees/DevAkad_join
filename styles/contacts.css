@@ -279,8 +279,17 @@
 
 .popup-alert {
     font-weight: bold;
-    color: red !important;
     text-align: center;
+    color: red !important;
+    background-color: var(--dimmed) !important;
+    border: solid 3px red;
+}
+
+.img-alert {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 40px;
 }
 
 

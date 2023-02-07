@@ -538,8 +538,14 @@ select {
     font-size: 21px;
     line-height: 120%;
     gap: 30px;
-    overflow: hidden;
+    /* overflow: hidden; */
     opacity: 0;
+}
+
+.popup-img {
+    height: 26px;
+    width: 22px;
+    object-fit: contain;
 }
 
 .animation {
@@ -561,12 +567,6 @@ select {
         bottom: 35%;
         opacity: 1;
     }
-}
-
-.popup-btn img {
-    height: 26px;
-    width: 22px;
-    object-fit: contain;
 }
 
 /* Help Classes */
