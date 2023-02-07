@@ -29,9 +29,9 @@ function renderTaskCard(statusId, taskId, taskCat, taskCatColor, taskPrio) {
  */
 function renderTaskCardContent(statusId, taskId, taskCat, taskCatColor, taskPrio) {
     return /* html */ `
-        <div class="task-cat ${taskCatColor}">${taskCat}</div>
-        <div class="task-title">${tasks[statusId][taskId]['title']}</div>
-        <div class="task-description">${tasks[statusId][taskId]['desc']}</div>
+        <div class="task-cat ${taskCatColor}">${escapeHtml(taskCat)}</div>
+        <div class="task-title">${escapeHtml(tasks[statusId][taskId]['title'])}</div>
+        <div class="task-description">${escapeHtml(tasks[statusId][taskId]['desc'])}</div>
         ${getSubtasksProgress(statusId, taskId)}
         <div class="task-card--footer">
             <div class="assignees">
@@ -113,7 +113,7 @@ function renderSubtaskForEditor(index, desc, checkbox) {
     return /*html*/ `
     <div class="subtask">
         <img id="subtask-status-${index}" src="${checkbox}" onclick="toggleStatusSubtask(${index})" style="cursor: pointer" alt="checkbox">
-        <label for="">${desc}</label>
+        <label for="">${escapeHtml(desc)}</label>
         <img onclick="deleteSubtaskEditor(${index})" src="./assets/img/black-x.svg" alt="" class="filter-btn">
     </div>`;
 }
@@ -130,7 +130,7 @@ function renderAssigneesListFull(name, shortName, color) {
     return /* html */`
         <div class="modal-task-assignees-item">
             <div class="assignee modal-task-assignee" style="background-color: ${color}">${shortName}</div>
-            <span>${name}</span>
+            <span>${escapeHtml(name)}</span>
         </div>
     `;
 }

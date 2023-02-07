@@ -1,7 +1,7 @@
 
 /**
  * Register a new user by submitting the Sign up form
- * @param {Object} e
+ * @param {event} e
  */
 async function registerUser(e) {
     e.preventDefault();

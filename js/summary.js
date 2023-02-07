@@ -18,8 +18,8 @@ async function initSummary() {
  * Sets the user name in the welcome message
  */
 function setCurrentUser() {
-    document.getElementById('welcome-name-mobile').innerHTML = currentUser['name'];
-    document.getElementById('welcome-name-desk').innerHTML = currentUser['name'];
+    document.getElementById('welcome-name-mobile').innerHTML = escapeHtml(currentUser['name']);
+    document.getElementById('welcome-name-desk').innerHTML = escapeHtml(currentUser['name']);
 }
 
 

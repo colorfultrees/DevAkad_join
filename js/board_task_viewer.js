@@ -82,7 +82,7 @@ function writeCategory(category) {
  */
 function writeTitleViewer(title) {
     const titleElemViewer = document.getElementById('modal-task-title');
-    titleElemViewer.innerHTML = title;
+    titleElemViewer.innerHTML = escapeHtml(title);
 }
 
 
@@ -102,7 +102,7 @@ function writeTitleEditor(title) {
  */
 function writeDescViewer(desc) {
     const descElemViewer = document.getElementById('modal-task-desc');
-    descElemViewer.innerHTML = desc;
+    descElemViewer.innerHTML = escapeHtml(desc);
 }
 
 

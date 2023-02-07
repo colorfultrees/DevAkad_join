@@ -320,9 +320,7 @@ function clickOnTask(event, statusId, taskId) {
  */
 async function openAddTask() {
     await loadHTML('modal-add-task-content', './assets/templates/add_task__template.html')
-
     await initAddTaskForm();
-
     toggleModal('modal-add-task');
 }
 

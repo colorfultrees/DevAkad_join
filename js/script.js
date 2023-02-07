@@ -249,7 +249,8 @@ if (hasTouch()) { // remove all the :hover stylesheets
  * @returns Boolean
  */
 function nameValidation(username, msgElemId, className) {
-    if (!username.value.trim().includes(' ')) {
+    let usernameString = username.value.trim();
+    if (!usernameString.includes(' ') || !hasLettersAtFirstPos(usernameString)) {
         document.getElementById(msgElemId).classList.remove(className);
         return false;
     }
@@ -257,6 +258,22 @@ function nameValidation(username, msgElemId, className) {
         document.getElementById(msgElemId).classList.add(className);
         return true;
     }
+}
+
+
+/**
+ * Checks if all parts of the user name start with a letter
+ * @param {String} username The full user name
+ * @returns Boolean
+ */
+function hasLettersAtFirstPos(username) {
+    const fullName = username.split(' ');
+
+    for (let n = 0; n < fullName.length; n++) {
+        let letterId = alphabet.indexOf(fullName[n][0].toUpperCase());
+        if (letterId < 0) return false;
+    }
+    return true;
 }
 
 
@@ -314,3 +331,18 @@ function cancelDelete(id) {
     let popup = document.getElementById(id);
     popup.classList.remove('animation');
 }
+
+
+/**
+ * Escapes special characters in a string
+ * @param {String} string The string to be treated
+ * @returns String
+ */
+function escapeHtml(string) {
+    return string
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+ }

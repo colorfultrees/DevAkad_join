@@ -69,7 +69,7 @@ function renderContactDiv(container, index) {
 function insertUserInformationById(index) {
     document.getElementById(`username-initials${index}`).innerHTML = users[index]['short_name'];
     document.getElementById(`username-initials${index}`).style.backgroundColor = users[index]['color'];
-    document.getElementById(`users-name${index}`).innerHTML = users[index]['name'];
+    document.getElementById(`users-name${index}`).innerHTML = escapeHtml(users[index]['name']);
     document.getElementById(`users-email${index}`).innerHTML = users[index]['email'];
 }
 
@@ -116,13 +116,13 @@ function toggleShowContactOnMobile() {
 
 
 /**
- * Writes the contact information to the page
+ * Writes the detailed contact information
  * @param {number} index Index of the user
  */
 function renderContactInformationById(index) {
     document.getElementById(`u-initials${index}`).innerHTML = users[index]['short_name'];
     document.getElementById(`u-initials${index}`).style.backgroundColor = users[index]['color'];
-    document.getElementById(`u-name${index}`).innerHTML = users[index]['name'];
+    document.getElementById(`u-name${index}`).innerHTML = escapeHtml(users[index]['name']);
     document.getElementById(`u-email${index}`).innerHTML = users[index]['email'];
     document.getElementById(`u-email${index}`).href = 'mailto:' + users[index]['email'];
     if (users[index]['phone']) {
@@ -131,7 +131,6 @@ function renderContactInformationById(index) {
     document.getElementById('edit-contact').setAttribute('onclick', `openContactEditor(${index})`);
     document.getElementById('confirm-delete-contact').setAttribute('onclick', `deleteContact(${index})`);
     document.getElementById('contact-edit-btn').setAttribute('onclick', `openContactEditor(${index})`);
-    // TODO: setAttribute for 'confirm-delete-contact-btn'
 }
 
 
