@@ -16,8 +16,8 @@ function renderContacts() {
     for (let i = 0; i < alphabet.length; i++) {
         for (let j = 0; j < users.length; j++) {
             if (alphabet[i] == getFirstLetterOfLastName(j)) {
-                renderLetterSection(container, alphabet[i]);
-                renderContactsOfLetter(container, alphabet[i]);
+                renderLetterSectionTitle(container, alphabet[i]);
+                renderContactsOfLetter(container, alphabet[i], j);
                 break;
             }
         }
@@ -29,7 +29,7 @@ function renderContacts() {
  * @param {Object} container The HTML element for the contact list
  * @param {String} letter The current letter
  */
-function renderLetterSection(container, letter) {
+function renderLetterSectionTitle(container, letter) {
     container.innerHTML += `<div class="alphabet-letter">${letter}</div>`;
     container.innerHTML += `<div class="contacts-underline"></div>`;
 }
@@ -40,10 +40,10 @@ function renderLetterSection(container, letter) {
  * @param {Object} container The HTML element for the contact list
  * @param {String} letter The current letter
  */
-function renderContactsOfLetter(container, letter) {
-    for (let k = 0; k < users.length; k++) {
-        if (letter == getFirstLetterOfLastName(k)) {
-            renderContactDiv(container, k);
+function renderContactsOfLetter(container, letter, start) {
+    for (let u = start; u < users.length; u++) {
+        if (letter == getFirstLetterOfLastName(u)) {
+            renderContactDiv(container, u);
         }
     }
 }
