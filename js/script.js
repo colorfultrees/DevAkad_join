@@ -26,7 +26,6 @@ let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
 async function init() {
     await includeHTML();
     await loadDataFromServer();
-    // await loadCurrentUserFromServer();
     loadCurrentUser()
     hasTouch();
     setHeaderUserBadge();
@@ -50,9 +49,7 @@ async function loadDataFromServer(login) {
 /**
  * Loads the data of the logged-in user
  */
-// async function loadCurrentUserFromServer() {
 function loadCurrentUser() {
-    // currentUser = JSON.parse(backend.getItem('currentUser'));
     currentUser = JSON.parse(localStorage.getItem('currentUser')) || guestUser;
 }
 
@@ -187,7 +184,6 @@ function hideCtxMenu(ctxMenu) {
 async function logout() {
     if (!readRememberMe()) {
         currentUser = {};
-        // await saveOnServer('currentUser', currentUser);
         saveCurrentUser();
     }
     window.location.href = './index.html';

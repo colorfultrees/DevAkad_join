@@ -9,7 +9,6 @@ let currentAssignees = [];
  * Initiates the add task page
  */
 async function initAddTask() {
-
     await init();
     await initAddTaskForm();
 }
@@ -23,7 +22,6 @@ async function initAddTaskForm() {
 
 
 // Help Functions //
-
 
 /**
  * Toggles a class list of an element
@@ -47,7 +45,6 @@ function toggleDropdown(dropdown, icon) {
 
 
 // Input Fields//
-
 
 /**
  * Shows the input field and the color selection if needed
@@ -122,11 +119,10 @@ function addNewCategory(input, container, dropdown) {
 async function pushCategory(catInput, currentCategoryColor) {
 
     let newCategory =
-
-    {
-        "name": catInput,
-        "color": currentCategoryColor
-    }
+        {
+            "name": catInput,
+            "color": currentCategoryColor
+        }
     categories.push(newCategory);
 }
 
@@ -219,8 +215,6 @@ function renderAssignees() {
             }
         }
     }
-
-    // list.innerHTML += inviteContactHTML();
 }
 
 
@@ -275,60 +269,6 @@ function changeCheckbox(i) {
 }
 
 
-/* function loadAssignees(){
-    let list = document.getElementById('assignee-list');
-    let badgeList = document.getElementById('add-task-assignees');
-    list.innerHTML = '';
-    badgeList.innerHTML = '';
-
-    for (let i = 0; i < users.length; i++) {
-        let assignee = users[i]['name'];
-        list.innerHTML += assigneeHTML(i, assignee);
-    }
-    showAssigneeBadge();
-    list.innerHTML += inviteContactHTML();
-} */
-
-
-/**
- * Adds a contact from the listed contacts on the server and validates the field
- * @param {string} input The assignees input field
- * @param {string} container The assignees input container
- * @param {string} dropdown The assignees dropdown container
- */
-/* function inviteContact(input, container, dropdown) {
-    let assignInput = document.getElementById(input);
-    let user = users.find(element => element['email'] == assignInput.value);
-    let assignedUser = currentAssignees.find(element => element['email'] == assignInput.value);
-
-    if (user && !assignedUser) {
-        currentAssignees.push(user);
-        assignInput.value = '';
-        renderAssignees();
-        hideInputField(input, container, dropdown);
-        validationForField(3, currentAssignees);
-    }
-} */
-
-
-/**
- * Renders the added assignees 
- */
-/* function renderAssignees() {
-    let list = document.getElementById('assignee-list');
-    let badgeList = document.getElementById('add-task-assignees');
-    list.innerHTML = '';
-    badgeList.innerHTML = '';
-
-    for (let i = 0; i < currentAssignees.length; i++) {
-        let assignee = currentAssignees[i]['name'];
-        list.innerHTML += assigneeHTML(i, assignee);
-    }
-    showAssigneeBadge();
-    list.innerHTML += inviteContactHTML();
-} */
-
-
 // Prio Section //
 
 
@@ -364,7 +304,6 @@ function setPrio(index) {
 
 
 // Subtask Function //
-
 
 /**
  * Adds a subtask to the list
@@ -409,7 +348,6 @@ function deleteSubtask(i) {
 
 
 // Create Task //
-
 
 /**
  * Creates a new task
@@ -459,7 +397,6 @@ function emailOfCurrentAssignee() {
 async function addNewTask(title, desc, date, assigneesMail) {
 
     let newTask = {
-
         "title": title.value,
         "desc": desc.value,
         "cat": currentCategory,
@@ -518,7 +455,6 @@ function clearAllInputs() {
 
 
 // Validation //
-
 
 /**
  * Validates the complete add task sheet
@@ -597,10 +533,10 @@ function resetValidation() {
  */
 function dateLimitation() {
 
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
-    var yyyy = today.getFullYear();
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1; //January is 0!
+    let yyyy = today.getFullYear();
 
     if (dd < 10) {
         dd = '0' + dd;
@@ -653,7 +589,7 @@ function directsToBoard() {
 
 
 /**
- * Adds a function for 
+ * Calls the function for adding subtasks by pressing the enter button
  * @param {object} e 
  */
 function enterFunctionSubtasks(e) {
@@ -664,7 +600,7 @@ function enterFunctionSubtasks(e) {
 
 
 /**
- * Adds a function for 
+ * Calls the function for adding assignees by pressing the enter button
  * @param {object} e 
  */
 function enterFunctionAssignees(e) {
@@ -675,7 +611,7 @@ function enterFunctionAssignees(e) {
 
 
 /**
- * Adds a function for 
+ * Calls the function for adding a category by pressing the enter button
  * @param {object} e 
  */
 function enterFunctionNewCategory(e) {

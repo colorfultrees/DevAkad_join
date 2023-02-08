@@ -9,7 +9,8 @@ function addCategoryHTML() {
     return /*html*/ `
         <li onclick="showInputField('category-input-container', 'category-dropdown-container', 'category-dropdown', 'triangle1')">
             <div>New Category</div>
-        </li>`
+        </li>
+    `;
 }
 
 
@@ -21,7 +22,8 @@ function addCategoryHTML() {
  */
 function selectedCategoryHTML(category, color) {
     return /*html*/ `
-        <div>${category}</div><div class="color-dot ${color}" style="margin-left: 10px;">`
+        <div>${category}</div><div class="color-dot ${color}" style="margin-left: 10px;">
+    `;
 }
 
 
@@ -36,7 +38,8 @@ function categoryHTML(category, color) {
         <li onclick="selectCategory('${category}', '${color}')">
             <div>${category}</div>
             <div class="color-dot ${color}"></div>
-        </li>`
+        </li>
+    `;
 }
 
 
@@ -56,7 +59,8 @@ function assigneeHTML(i, assignee) {
                 <div>${escapeHtml(assignee)}</div>
                 <img id="checkbox${i}" class="checkbox" src="./assets/img/checkbox-assignee-unchecked.svg" alt="checkbox">
             </label>
-        </li>`
+        </li>
+    `;
 }
 
 
@@ -66,12 +70,13 @@ function assigneeHTML(i, assignee) {
  */
 function inviteContactHTML() {
     return /*html*/ `
-    <li onclick="showInputField('assign-input-container', 'assign-dropdown-container', 'assign-dropdown', 'triangle2')">
-        <label class="flex-btw">
-            <div>Invite new contact</div>
-             <img src="./assets/img/contact-icon.svg" alt="contact icon">
-        </label>
-    </li>`
+        <li onclick="showInputField('assign-input-container', 'assign-dropdown-container', 'assign-dropdown', 'triangle2')">
+            <label class="flex-btw">
+                <div>Invite new contact</div>
+                <img src="./assets/img/contact-icon.svg" alt="contact icon">
+            </label>
+        </li>
+    `;
 }
 
 
@@ -83,7 +88,8 @@ function inviteContactHTML() {
  */
 function assigneeBadgeHTML(initials, color) {
     return /*html*/ `
-    <div class="add-task-assignee" style="background-color: ${color}">${initials}</div>`
+        <div class="add-task-assignee" style="background-color: ${color}">${initials}</div>
+    `;
 }
 
 
@@ -95,9 +101,10 @@ function assigneeBadgeHTML(initials, color) {
  */
 function subTaskHTML(subtask, i) {
     return /*html*/ `
-    <div class="subtask">
-        <img src="./assets/img/checkbox-unchecked.svg" alt="checkbox">
-        <label for="">${escapeHtml(subtask)}</label>
-        <img onclick="deleteSubtask(${i})" src="./assets/img/black-x.svg" alt="" class="filter-btn">
-    </div>`;
+        <div class="subtask">
+            <img src="./assets/img/checkbox-unchecked.svg" alt="checkbox">
+            <label for="">${escapeHtml(subtask)}</label>
+            <img onclick="deleteSubtask(${i})" src="./assets/img/black-x.svg" alt="" class="filter-btn">
+        </div>
+    `;
 }

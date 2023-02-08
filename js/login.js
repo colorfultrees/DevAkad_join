@@ -7,6 +7,9 @@ async function initLogin() {
 }
 
 
+/**
+ * Checks if the last user has requested "Remember me"
+ */
 function checkForRemeberedUser() {
     loadCurrentUser();
     if (currentUser['email']) {
@@ -24,7 +27,6 @@ function checkForRemeberedUser() {
  * Handles guest login
  */
 function guestLogin() {
-
     currentUser = guestUser;
     // await saveOnServer('currentUser', currentUser);
     saveCurrentUser();
@@ -44,7 +46,6 @@ function login(e) {
     e.preventDefault();
 
     if (checkLoginData()) {
-        // await saveOnServer('currentUser', currentUser);
         saveCurrentUser();
         localStorage.setItem('rememberMe', chkBxRemMe.checked);;
         window.location.href = './summary.html?login=2';
@@ -129,7 +130,7 @@ async function onSubmit(event) {
  * @returns 
  */
 function action(formData) {
-    const input = 'https://gruppe-392.developerakademie.net/join/send_mail.php';
+    const input = 'https://christof-mark.developerakademie.net/join_app/join/send_mail.php';
     const requestInit = {
         method: 'post',
         body: formData
