@@ -82,7 +82,8 @@ function renderSingleTaskCard(statusId, taskId, container) {
 
 /**
  * Toggles the visibility of the "No Task" message of the respective status
- * @param {number} statusId The ID of the respective status
+ * @param {Number} statusId The ID of the respective status
+ * @param {Boolean} isVisible Visibility status to be set for the message badge
  */
 function showMsgNoTask(statusId, isVisible) {
     const msg = document.getElementById(`no-task-status-${statusId}`);
@@ -387,10 +388,17 @@ function renderTasksStatusBySearch(statusId) {
 function renderNewTask() {
     const newTaskId = tasks[0].length - 1;
     const statusContainer = document.getElementById(`tasks-status-0`);
+    const noTaskMsg = document.getElementById('no-task-status-0');
+    if (!noTaskMsg.classList.contains('d-none')) showMsgNoTask(0, false);
     renderSingleTaskCard(0, newTaskId, statusContainer);
     toggleModal('modal-add-task');
 }
 
+
+/**
+ * Prevents a modal window from closing when clicking inside it
+ * @param {Event} event 
+ */
 function doNotClose(event) {
     event.stopPropagation();
 }
