@@ -1,24 +1,12 @@
-setURL('https://christof-mark.developerakademie.net/join_app/smallest_backend_ever');
-
-/**
- * Maximum width for mobile screen
- */
+const URL_BACKEND = 'https://christof-mark.developerakademie.net/join_app/smallest_backend_ever';
+const URL_MAIL = 'https://christof-mark.developerakademie.net/join_app/join/send_mail.php';
 const MOBILE_MAX_WIDTH = 940;
-/**
- * Delay for fade-out of welcome message on mobile device
- */
 const WELCOME_MSG_DELAY = 800;
-/**
- * Fade-out time for welcome message on mobile device
- */
 const WELCOME_MSG_TRANS = 400;
-/**
- * Fade-in/fade-out time for context menu in header
- */
 const HEADER_CTX_MENU_ANIM_TIME = 220;
-
 let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ä', 'Ö', 'Ü'];
 
+setURL(URL_BACKEND);
 
 /**
  * Initiates the main page

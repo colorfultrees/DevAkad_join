@@ -130,7 +130,7 @@ async function onSubmit(event) {
  * @returns 
  */
 function action(formData) {
-    const input = 'https://christof-mark.developerakademie.net/join_app/join/send_mail.php';
+    const input = URL_MAIL;
     const requestInit = {
         method: 'post',
         body: formData
