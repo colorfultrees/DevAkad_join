@@ -1,13 +1,7 @@
-/**
- * The selected task to be dragged
- */
 let selectedTask = {
     status: -1,
     task: -1
 };
-/**
- * The ID of the target status container
- */
 let target = -1;
 
 

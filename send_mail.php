@@ -14,7 +14,7 @@
 #   This script has been created to send an email to the $recipient
 #   
 #  1) Upload this file to your FTP Server
-#  2) Send a POST rewquest to this file, including
+#  2) Send a POST request to this file, including
 #     [name] The name of the sender (Absender)
 #     [message] Message that should be send to you
 #

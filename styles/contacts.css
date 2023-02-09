@@ -202,7 +202,6 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 30px;
-    /* margin-bottom: 30px; */
     margin-bottom: 7px;
     max-width: var(--contact-details-maxwidth);
 }
@@ -270,7 +269,6 @@
 #contact-edit-btn:hover {
     background-color: var(--highlight);
     box-shadow: var(--btn-shadow-hover);
-    /* border-radius: 10px; */
 }
 
 #contact-delete-btn {
@@ -291,8 +289,3 @@
     left: -15px;
     width: 40px;
 }
-
-
-/* .d-none {
-    display: none;
-} */

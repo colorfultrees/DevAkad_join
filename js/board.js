@@ -1,22 +1,7 @@
-/**
- * Time for fading a modal in and out
- */
 const MODAL_FADE_TIME = 350;
-/**
- * The currently opened task
- */
 let openedTask = { statusId: -1, taskId: -1 };
-/**
- * Information about the used device
- */
 let isTouchDevice = false;
-/**
- * The click position on a touch device
- */
 let clickPos = { x: 0, y: 0 };
-/**
- * List of tasks filtered by the search function
- */
 let searchResult = [[], [], [], []];
 
 

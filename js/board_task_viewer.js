@@ -236,11 +236,8 @@ function renderSubtasksEditor() {
 
 /**
  * Adds a subtask in the task editor
- * @param {Object} input
- * @param {Object} container 
- * @param {Object} dropdown 
  */
-function addSubtaskEditor(input, container, dropdown) {
+function addSubtaskEditor() {
     const inputSubtask = document.getElementById('subtask-input');
 
     if (inputSubtask.value.length >= 1) {
@@ -249,7 +246,6 @@ function addSubtaskEditor(input, container, dropdown) {
             'status': false
         });
         inputSubtask.value = '';
-        hideInputField(input, container, dropdown);
     }
     addSubtaskToList();
 }
@@ -469,6 +465,9 @@ function updateTaskCard() {
 }
 
 
+/**
+ * Deletes the selected task
+ */
 async function deleteTask() {
     cancelDelete('request-delete-task-popup');
     toggleModal('modal-task');

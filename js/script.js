@@ -42,10 +42,14 @@ function loadCurrentUser() {
 }
 
 
+/**
+ * Saves the current user in localStorage
+ */
 function saveCurrentUser() {
     userAsString = JSON.stringify(currentUser);
     localStorage.setItem('currentUser', userAsString);
 }
+
 
 /**
  * Loads the requested data from server
@@ -70,6 +74,10 @@ async function saveOnServer(key, item) {
 }
 
 
+/**
+ * Checks if "Remember me" is set
+ * @returns Boolean
+ */
 function readRememberMe() {
     const remMe = JSON.parse(localStorage.getItem('rememberMe')) || false;
     return remMe;

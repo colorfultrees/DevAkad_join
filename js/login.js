@@ -28,7 +28,6 @@ function checkForRemeberedUser() {
  */
 function guestLogin() {
     currentUser = guestUser;
-    // await saveOnServer('currentUser', currentUser);
     saveCurrentUser();
     window.location.href = './summary.html?login=1'
 }
@@ -56,6 +55,10 @@ function login(e) {
 }
 
 
+/**
+ * Validates the log-in data
+ * @returns Boolean
+ */
 function checkLoginData() {
     currentUser = users.find(u => u.email == email.value && u.password == password.value);
     return currentUser ? true : false;
@@ -127,7 +130,7 @@ async function onSubmit(event) {
 /**
  * Fetching php script to send mail
  * @param {Object} formData 
- * @returns 
+ * @returns Promise
  */
 function action(formData) {
     const input = URL_MAIL;
@@ -144,7 +147,7 @@ function action(formData) {
 
 
 /**
- * Checking if user with entered Email exists
+ * Checks if user with entered email exists
  */
 function checkIfEmailExists() {
     let email = document.getElementById('email-field');

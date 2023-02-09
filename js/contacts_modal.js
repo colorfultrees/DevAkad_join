@@ -1,6 +1,3 @@
-/**
- * The email of the contact to be edited
- */
 let currentContactMail = '';
 
 /**
@@ -201,16 +198,10 @@ function setBadgeEditor(id) {
  */
 function setEditorButtons(id) {
     const btnsNew = document.getElementById('contact-submit-btns');
-    // const createBtn = document.getElementById('contact-create-btn');
     const containerSave = document.getElementById('contact-save-btn');
-    // const btnSave = document.getElementById('contact-update-btn');
     const contactForm = document.getElementById('contact-form');
     btnsNew.classList.add('d-none');
-    // createBtn.removeAttribute('onclick');
-    // createBtn.removeAttribute('type');
     containerSave.classList.remove('d-none');
-    // btnSave.setAttribute('onclick', `updateContact(${id})`);
-    // btnSave.setAttribute('type', 'submit');
     contactForm.setAttribute('onsubmit', `updateContact(${id}); return false;`)
 }
 
@@ -220,16 +211,10 @@ function setEditorButtons(id) {
  */
 function setContactFormButtons() {
     const btnsNew = document.getElementById('contact-submit-btns');
-    // const createBtn = document.getElementById('contact-create-btn');
     const containerSave = document.getElementById('contact-save-btn');
-    // const btnSave = document.getElementById('contact-update-btn');
     const contactForm = document.getElementById('contact-form');
     btnsNew.classList.remove('d-none');
-    // createBtn.setAttribute('onclick', 'saveNewContact()');
-    // createBtn.setAttribute('type', 'submit');
     containerSave.classList.add('d-none');
-    // btnSave.removeAttribute('onclick');
-    // btnSave.removeAttribute('type');
     contactForm.setAttribute('onsubmit', `saveNewContact(); return false;`)
 }
 
@@ -300,7 +285,6 @@ function checkAndUpdateLoggedIn(id) {
     if (currentUser['email'] != currentContactMail) return;
 
     currentUser = users[id];
-    // await saveOnServer('currentUser', currentUser);
     saveCurrentUser();
     setHeaderUserBadge();
 }

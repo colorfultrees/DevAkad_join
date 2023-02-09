@@ -54,8 +54,6 @@ function renderContactsOfLetter(container, letter, start) {
  * @param {number} index Index of the user
  */
 function renderContactDiv(container, index) {
-    // let contactsMenu = document.getElementById('contacts-menu-scrollable');
-    // contactsMenu.innerHTML += contactDivHTML(index);
     container.innerHTML += contactDivHTML(index);
 
     insertUserInformationById(index);
@@ -75,7 +73,7 @@ function insertUserInformationById(index) {
 
 
 /**
- * 
+ * Renders the contact details
  * @param {number} index Index of the user
  */
 function renderContactInformation(index) {
@@ -136,7 +134,7 @@ function renderContactInformationById(index) {
 
 
 /**
- * 
+ * Highlights the selected user
  * @param {number} index Index of the user
  */
 function backgroundColorOfSelected(index) {
@@ -187,6 +185,10 @@ function contactSlideInAnimation() {
 }
 
 
+/**
+ * Deletes the selected user
+ * @param {Number} id The ID of the user
+ */
 function deleteContact(id) {
     cancelDelete('request-delete-contact-popup');
 
@@ -202,11 +204,21 @@ function deleteContact(id) {
 }
 
 
+/**
+ * Checks if selected user is logged-in
+ * @param {Number} id The ID of the selected user
+ * @returns Boolean
+ */
 function isUserLoggedIn(id) {
     return users[id]['email'] == currentUser['email'];
 }
 
 
+/**
+ * Checks if the selected user has tasks assigned
+ * @param {Number} id The ID of the selected user
+ * @returns Boolean
+ */
 function hasUserTasksAssigned(id) {
     for (let s = 0; s < tasks.length; s++) {
         for (let t = 0; t < tasks[s].length; t++) {
@@ -218,6 +230,10 @@ function hasUserTasksAssigned(id) {
 }
 
 
+/**
+ * Executes the deletion of the selected user
+ * @param {Number} id The ID of the selected user
+ */
 function execContactDelete(id) {
     users.splice(id, 1);
     saveOnServer('users', users);
@@ -227,6 +243,10 @@ function execContactDelete(id) {
 }
 
 
+/**
+ * Clears the contact details display
+ * @returns HTML
+ */
 function clearContactCard() {
     let contactDIV = document.getElementById('contact-div');
     contactDIV.innerHTML = '';
