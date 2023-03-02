@@ -39,8 +39,60 @@ function toggleClassList(id, classList,) {
  * @param {string} icon The triangle icon
  */
 function toggleDropdown(dropdown, icon) {
+    const dropdownElement = document.getElementById(dropdown);
     toggleClassList(dropdown, 'd-none');
     toggleClassList(icon, 'rotate180');
+
+    setTimeout(() => {
+        if (!dropdownElement.classList.contains('d-none')) {
+            window.onclick = (event) => {closeDropdownsOnClickOutside(event)};
+        }
+    }, 100);
+}
+
+
+/**
+ * Closes all opened dropdown menus on click outside of them
+ * @param {Event} event 
+ */
+function closeDropdownsOnClickOutside(event) {
+    const evTarget = event.target;
+    let isChildOfParent = checkParentChildConn(evTarget);
+
+    if (!evTarget.matches('.dropdown-container') && !isChildOfParent) {
+        closeDropdowns();
+        window.onclick = null;
+    }
+}
+
+
+/**
+ * Checks whether the clicked element is a child of the given parent elements
+ * @param {NodeList} containers List of HTML-Elements
+ * @param {Object} evTarget The clicked element
+ * @returns Boolean
+ */
+function checkParentChildConn(evTarget) {
+    const containers = document.querySelectorAll('.dropdown-container');
+    for (let c = 0; c < containers.length; c++) {
+        if (containers[c].contains(evTarget)) return true;
+    }
+    return false;
+}
+
+
+/**
+ * Closes all open dropdowns
+ */
+function closeDropdowns() {
+    const dropdowns = document.querySelectorAll('.dropdown-menu');
+    const dropdownArrows = document.querySelectorAll('.dropdown-arrow');
+    for (let d = 0; d < dropdowns.length; d++) {
+        if (!dropdowns[d].classList.contains('d-none')) {
+            toggleClassList(dropdowns[d].id, 'd-none');
+            toggleClassList(dropdownArrows[d].id, 'rotate180');
+        }
+    }
 }
 
 
