@@ -42,7 +42,7 @@ function toggleDropdown(dropdown, icon) {
     const dropdownElement = document.getElementById(dropdown);
     toggleClassList(dropdown, 'd-none');
     toggleClassList(icon, 'rotate180');
-
+    
     setTimeout(() => {
         if (!dropdownElement.classList.contains('d-none')) {
             window.onclick = (event) => {closeDropdownsOnClickOutside(event)};
@@ -63,6 +63,8 @@ function closeDropdownsOnClickOutside(event) {
         closeDropdowns();
         window.onclick = null;
     }
+
+    event.stopPropagation();
 }
 
 
