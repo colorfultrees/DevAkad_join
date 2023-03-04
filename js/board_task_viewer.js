@@ -239,7 +239,7 @@ function renderSubtasksEditor() {
 /**
  * Adds a subtask in the task editor
  */
-function addSubtaskEditor() {
+function addSubtaskEditor(calledByClick) {
     const inputSubtask = document.getElementById('subtask-input');
 
     if (inputSubtask.value.length >= 1) {
@@ -250,6 +250,10 @@ function addSubtaskEditor() {
         inputSubtask.value = '';
     }
     addSubtaskToList();
+
+    if (calledByClick) {
+        hideInputField('subtask-input', 'input-btns', 'plus-icon');
+    }
 }
 
 
@@ -259,7 +263,7 @@ function addSubtaskEditor() {
  */
 function enterFunctionSubtasksEditor(e) {
     if (e.code == "Enter") {
-        addSubtaskEditor('subtask-input', 'input-btns', 'plus-icon');
+        addSubtaskEditor(false);
     }
 }
 
