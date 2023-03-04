@@ -138,7 +138,8 @@
                             <label for="email" id="mail-validation" class="input-validation hidden">This email address
                                 already exists!</label>
                         </div>
-                        <input class="input-phone" id="phone" type="tel" name="phone" placeholder="Phone">
+                        <input class="input-phone" id="phone" type="tel" name="phone" placeholder="Phone"
+                            oninput="this.value = this.value.replace(/[^0-9^\s^\+^\-^\(^\)^\/^\*^#]/g, '');">
                         <div id="contact-submit-btns">
                             <button onclick="toggleContactsModal()" type="reset" class="clear-btn">Cancel
                                 <img src="./assets/img/clear-x.svg">
