@@ -362,7 +362,7 @@ function setPrio(index) {
 /**
  * Adds a subtask to the list
  * @param {string} input The subtask input field
- * @param ................................
+ * @param {boolean} calledByClick Flag to signal whether the function was called by mouseclick
  */
 function addSubtask(input, calledByClick) {
     let inputSubtask = document.getElementById(input);
@@ -650,7 +650,6 @@ function directsToBoard() {
  */
 function enterFunctionSubtasks(e) {
     if (e.code == "Enter") {
-        // addSubtask('subtask-input', 'input-btns', 'plus-icon');
         addSubtask('subtask-input', false);
     }
 }

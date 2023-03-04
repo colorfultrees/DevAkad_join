@@ -238,6 +238,7 @@ function renderSubtasksEditor() {
 
 /**
  * Adds a subtask in the task editor
+ * @param {boolean} calledByClick Flag to indicate whether the function was called by mouseclick
  */
 function addSubtaskEditor(calledByClick) {
     const inputSubtask = document.getElementById('subtask-input');
