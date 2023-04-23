@@ -2,8 +2,8 @@
  * Initialises the summary
  */
 async function initSummary() {
-    setWelcomeMsg();
     await init();
+    setWelcomeMsg();
     setCurrentUser();
     getNumberTasksAll();
     getNumberTasksTodo();

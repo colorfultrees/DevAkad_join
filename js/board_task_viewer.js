@@ -248,9 +248,9 @@ function addSubtaskEditor(calledByClick) {
             'title': inputSubtask.value,
             'status': false
         });
+        addSubtaskToList();
         inputSubtask.value = '';
     }
-    addSubtaskToList();
 
     if (calledByClick) {
         hideInputField('subtask-input', 'input-btns', 'plus-icon');
