@@ -263,9 +263,6 @@ textarea:focus {
 }
 
 .due-date-input {
-    /* display: flex;
-    flex-direction: row;
-    align-items: center; */
     padding: 0 21px;
     gap: 10px;
     isolation: isolate;

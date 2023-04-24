@@ -96,7 +96,6 @@ function handleWelcomeOnMobile() {
     const welcome = document.getElementById('welcome-mobile');
 
     if (windowWidth <= MOBILE_MAX_WIDTH) {
-        // welcome.classList.remove('d-none');
         setTimeout(() => {
             welcome.classList.add('welcome-mobile-fade');
         }, 1);
