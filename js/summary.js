@@ -1,3 +1,7 @@
+const MOBILE_MAX_WIDTH = 940;
+const WELCOME_MSG_DELAY = 800;
+const WELCOME_MSG_TRANS = 400;
+
 /**
  * Initialises the summary
  */
@@ -47,6 +51,35 @@ function setWelcomeMsg() {
 
     welcomeTextDesk.innerHTML = welcomeText;
     welcomeTextMobile.innerHTML = welcomeText;
+}
+
+
+/**
+ * Controls the welcome screen on mobile view
+ */
+function handleWelcomeOnMobile() {
+    const welcome = document.getElementById('welcome-mobile');
+    let isLogin = new URLSearchParams(window.location.search);
+    if (!isLogin.get('login')) {
+        welcome.classList.add('d-none');
+        return;
+    }
+
+    const windowWidth = window.innerWidth;
+    const delay = WELCOME_MSG_TRANS + WELCOME_MSG_DELAY + 10;
+    // welcome = document.getElementById('welcome-mobile');
+
+    if (windowWidth <= MOBILE_MAX_WIDTH && isLogin.get('login')) {
+        setTimeout(() => {
+            welcome.classList.add('welcome-mobile-fade');
+        }, 1);
+        setTimeout(() => {
+            welcome.classList.add('d-none');
+        }, delay);
+    }
+    else {
+        welcome.classList.add('d-none');
+    }
 }
 
 

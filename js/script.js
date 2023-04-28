@@ -1,8 +1,8 @@
 const URL_BACKEND = 'https://christof-mark.developerakademie.net/join_app/smallest_backend_ever';
 const URL_MAIL = 'https://christof-mark.developerakademie.net/join_app/join/send_mail.php';
-const MOBILE_MAX_WIDTH = 940;
-const WELCOME_MSG_DELAY = 800;
-const WELCOME_MSG_TRANS = 400;
+// const MOBILE_MAX_WIDTH = 940;
+// const WELCOME_MSG_DELAY = 800;
+// const WELCOME_MSG_TRANS = 400;
 const HEADER_CTX_MENU_ANIM_TIME = 220;
 let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ä', 'Ö', 'Ü'];
 
@@ -88,14 +88,21 @@ function readRememberMe() {
  * Controls the welcome screen on mobile view
  */
 function handleWelcomeOnMobile() {
+    let welcome;
     let isLogin = new URLSearchParams(window.location.search);
-    if (!isLogin.get('login')) return;
+    if (!isLogin.get('login')) {
+        try {
+            welcome = document.getElementById('welcome-mobile');
+            welcome.classList.add('d-none');
+        } catch {/* Nothing to be done */}
+        return;
+    }
 
     const windowWidth = window.innerWidth;
     const delay = WELCOME_MSG_TRANS + WELCOME_MSG_DELAY + 10;
-    const welcome = document.getElementById('welcome-mobile');
+    welcome = document.getElementById('welcome-mobile');
 
-    if (windowWidth <= MOBILE_MAX_WIDTH) {
+    if (windowWidth <= MOBILE_MAX_WIDTH && isLogin.get('login')) {
         setTimeout(() => {
             welcome.classList.add('welcome-mobile-fade');
         }, 1);
