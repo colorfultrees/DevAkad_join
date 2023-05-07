@@ -42,13 +42,13 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $email = $_POST['email'];
         $message = "Hello,\n
         \nFollow this link to reset your JOIN password for your account:
-        \nhttps://christof-mark.developerakademie.net/join_app/join/reset-password.html?email=".$email."\n
+        \nhttps://join.christof-mark.com/reset-password.html?email=".$email."\n
         \nYour JOIN team!";
 
         $recipient = $email;
 
         $subject = "Reset your JOIN password";
-        $headers = "From: noreply@christof-mark.developerakademie.net";
+        $headers = "From: noreply@christof-mark.com";
 
         $result = mail($recipient, $subject, $message, $headers);
         print($result);

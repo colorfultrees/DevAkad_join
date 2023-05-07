@@ -1,8 +1,5 @@
-const URL_BACKEND = 'https://christof-mark.developerakademie.net/join_app/smallest_backend_ever';
-const URL_MAIL = 'https://christof-mark.developerakademie.net/join_app/join/send_mail.php';
-// const MOBILE_MAX_WIDTH = 940;
-// const WELCOME_MSG_DELAY = 800;
-// const WELCOME_MSG_TRANS = 400;
+const URL_BACKEND = 'https://join.christof-mark.com/smallest_backend_ever';
+const URL_MAIL = 'https://join.christof-mark.com/send_mail.php';
 const HEADER_CTX_MENU_ANIM_TIME = 220;
 let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ä', 'Ö', 'Ü'];
 
