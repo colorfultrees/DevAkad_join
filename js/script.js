@@ -142,15 +142,17 @@ function controlMenuHighlighting() {
 
 /**
  * Toggles the visibility of the context menu
- * @param {Object} ctxMenuId The ID of the context menu
+ * @param {String} ctxMenuId The ID of the context menu
  */
 function toggleContextMenu(ctxMenuId) {
     const ctxMenu = document.getElementById(ctxMenuId);
 
     if (ctxMenu.classList.contains('d-none')) {
+        if (ctxMenu.id != 'context-sub--move') toggleCloseOnClickOutsideLayer(ctxMenuId, true);
         showCtxMenu(ctxMenu);
     }
     else {
+        toggleCloseOnClickOutsideLayer(ctxMenuId, false);
         hideCtxMenu(ctxMenu);
     }
 }
@@ -177,6 +179,33 @@ function hideCtxMenu(ctxMenu) {
     setTimeout(() => {
         ctxMenu.classList.add('d-none');
     }, HEADER_CTX_MENU_ANIM_TIME);
+}
+
+
+/**
+ * Toggles the close-on-click-outside layer
+ * @param {String} ctxMenuId The ID of the context menu
+ * @param {Boolean} display Sets whether the close-on-click-outside layer should be displayed or hidden
+ */
+function toggleCloseOnClickOutsideLayer(ctxMenuId, display) {
+    const closeOnClickOutsideHeader = document.getElementById('close-on-click-outside--header');
+    const closeOnClickOutsideMain = document.getElementById('close-on-click-outside--main');
+    if (display) {
+        if (ctxMenuId == 'context-menu-task') {
+            closeOnClickOutsideHeader.setAttribute('onclick', `controlVisTaskCtx()`);
+            closeOnClickOutsideMain.setAttribute('onclick', `controlVisTaskCtx()`);
+        }
+        else {
+            closeOnClickOutsideHeader.setAttribute('onclick', `toggleContextMenu('${ctxMenuId}')`);
+            closeOnClickOutsideMain.setAttribute('onclick', `toggleContextMenu('${ctxMenuId}')`);
+        }
+        closeOnClickOutsideHeader.classList.remove('d-none');
+        closeOnClickOutsideMain.classList.remove('d-none');
+    }
+    else {
+        closeOnClickOutsideHeader.classList.add('d-none');
+        closeOnClickOutsideMain.classList.add('d-none');
+    }
 }
 
 

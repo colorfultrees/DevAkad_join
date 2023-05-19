@@ -179,11 +179,36 @@ function setClickParams(statusId, taskId) {
  */
 function controlPosTaskCtx(ctxMenu, posX, posY) {
     if (ctxMenu.classList.contains('d-none')) {
-        clickPos.x = posX;
-        clickPos.y = posY;
-        ctxMenu.style.top = `${posY - 50}px`;
-        ctxMenu.style.left = `${posX - 70}px`;
+        const pos = checkPosTaskCtx(posX, posY);
+        clickPos.x = pos.x;
+        clickPos.y = pos.y;
+        ctxMenu.style.top = `${pos.y - 50}px`;
+        ctxMenu.style.left = `${pos.x - 70}px`;
     }
+}
+
+
+/**
+ * Checks whether the clicked position is outside given boundaries and adapts it
+ * @param {Number} posX The clicked x-position
+ * @param {Number} posY The clicked y-position
+ * @returns Adapted positions
+ */
+function checkPosTaskCtx(posX, posY) {
+    const boundary = {
+        right: window.innerWidth,
+        bottom: window.innerHeight
+    };
+    let newPosX = posX;
+    let newPosY = posY;
+
+    if (posX < 80) newPosX = 80;
+    else if (boundary.right - posX < 120) newPosX = boundary.right - 120;
+
+    if (posY < 140) newPosY = 140;
+    else if (boundary.bottom - posY < 140) newPosY = boundary.bottom -140;
+
+    return {x: newPosX, y: newPosY};
 }
 
 
@@ -241,22 +266,13 @@ function controlContextSubPos() {
     };
     const ctxSub = document.getElementById('context-sub--move');
 
-    if (boundary.right - clickPos.x < 200) {
-        ctxSub.style.left = 'unset';
-        ctxSub.style.right = '100%';
-    }
-    else {
-        ctxSub.style.right = 'unset';
-        ctxSub.style.left = '100%';
-    }
-
-    if (boundary.bottom - clickPos.y < 180) {
+    if (boundary.bottom - clickPos.y < 260) {
         ctxSub.style.top = 'unset';
-        ctxSub.style.bottom = '-8px';
+        ctxSub.style.bottom = '90px'; // '-8px';
     }
     else {
         ctxSub.style.bottom = 'unset';
-        ctxSub.style.top = '20px';
+        ctxSub.style.top = '90px'; //'20px';
     }
 }
 

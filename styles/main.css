@@ -140,6 +140,7 @@ nav {
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
     opacity: 0;
     transition: opacity 220ms ease;
+    z-index: 2;
 }
 
 .context-main {
@@ -207,4 +208,13 @@ nav {
     font-size: var(--welcome-name-size);
     font-weight: 700;
     color: var(--highlight);
+}
+
+#close-on-click-outside--main, #close-on-click-outside--header {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
 }
