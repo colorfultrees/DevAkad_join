@@ -268,11 +268,11 @@ function controlContextSubPos() {
 
     if (boundary.bottom - clickPos.y < 260) {
         ctxSub.style.top = 'unset';
-        ctxSub.style.bottom = '90px'; // '-8px';
+        ctxSub.style.bottom = '90px';
     }
     else {
         ctxSub.style.bottom = 'unset';
-        ctxSub.style.top = '90px'; //'20px';
+        ctxSub.style.top = '90px';
     }
 }
 
